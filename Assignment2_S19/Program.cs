@@ -145,17 +145,74 @@ namespace Assignment2_S19
             return missingarr.OfType<int>().ToArray();
 
         }
-
+        // Question 5th and 6th Submitted by Sudesh V Khillare
         // Complete the gradingStudents function below.
         static int[] gradingStudents(int[] grades)
         {
-            return new int[] { };
+            int size = grades.Length;
+            int[] score = new int[size];
+            int i, temp, mul, diff;
+
+            for (i = 0; i < grades.Length; i++)
+            {
+                if (grades[i] < 0)
+                {
+                    Console.WriteLine("Enter Valid Array");
+                    break;
+                }
+                temp = grades[i];
+                if (grades[i] > 37)
+                {
+                    mul = temp / 5;
+                    diff = (mul + 1) * 5 - temp;
+                    if (diff < 3)
+                    {
+                        temp = (mul + 1) * 5;
+
+                    }
+                }
+                score[i] = temp;
+            }
+
+            return score;
+
         }
 
         // Complete the findMedian function below.
         static int findMedian(int[] arr)
         {
-            return 0;
+            int i, j, median, div;
+            int temp = 0;
+
+            for (i = 0; i < arr.Length; i++)
+            {
+                for (j = 0; j < arr.Length - 1; j++)
+                {
+                    if (arr[j] > arr[j + 1])
+                    {
+                        temp = arr[j + 1];
+                        arr[j + 1] = arr[j];
+                        arr[j] = temp;
+                    }
+                }
+            }
+            /*
+            // To verify if array is sorted properly
+            for (i = 0; i < arr.Length; i++)
+                Console.Write(arr[i] + " ");
+                Console.ReadKey(); */
+
+            if (arr.Length % 2 == 0)
+            {
+                div = arr.Length / 2;
+                median = (arr[div] + arr[div + 1]) / 2;
+            }
+            else
+            {
+                div = arr.Length / 2;
+                median = arr[div];
+            }
+            return median;
         }
 
         // Complete the closestNumbers function below.
