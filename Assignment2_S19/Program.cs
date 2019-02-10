@@ -71,13 +71,62 @@ namespace Assignment2_S19
         // Complete the rotLeft function below.
         static int[] rotLeft(int[] a, int d)
         {
-            return new int[] { };
+            var ret = new int[a.Length];
+            try
+            {
+                if (d >= 0)
+                {
+                    int length = a.Length;
+                    d %= a.Length;
+
+                    for (int i = 0; i < a.Length; ++i)
+                    {
+                        ret[i] = a[(i + d) % a.Length];
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("the number of rotations input is negative, hence the array will remain same");
+                    return a;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception " + e);
+            }
+
+            return ret;
         }
 
         // Complete the maximumToys function below.
         static int maximumToys(int[] prices, int k)
         {
-            return 0;
+           int count = 0;
+            try
+            {
+                int n = prices.Length;
+                prices = ArraySort(prices);
+
+                int j = 0;
+
+                for (int i = 0; i < n; i++)
+                {
+                    if (j + prices[i] < k)
+                    {
+                        count++;
+                        j = j + prices[i];
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception " + e);
+            }
+            return count;
         }
 
         // Complete the balancedSums function below.
@@ -218,13 +267,85 @@ namespace Assignment2_S19
         // Complete the closestNumbers function below.
         static int[] closestNumbers(int[] arr)
         {
-            return new int[] { };
+            List<int> lst = new List<int> { };
+            try
+            {
+                arr = ArraySort(arr);
+                int temp = 0;
+                int diff = 0;
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    int first = arr[i];
+
+                    for (int j = i + 1; j < arr.Length; j++)
+                    {
+                        int second = arr[j];
+                        diff = second - first;
+
+                        if (i == 0 && j == 1)
+                        {
+                            temp = diff;
+                        }
+
+                        if (diff == temp)
+                        {
+                            lst.Add(arr[i]);
+                            //lst.ForEach(Console.WriteLine);
+                            lst.Add(arr[j]);
+                        }
+
+                        if (diff < temp)
+                        {
+                            lst.Clear();
+                            temp = diff;
+                            lst.Add(arr[i]);
+                            lst.Add(arr[j]);
+                        }
+
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception " + e);
+            }
+            return lst.ToArray();
         }
 
         // Complete the dayOfProgrammer function below.
         static string dayOfProgrammer(int year)
         {
             return "";
+        }
+
+        static int[] ArraySort(int[] arr)
+        {
+            try
+            {
+                int temp;
+
+                // traverse 0 to array length 
+                for (int i = 0; i < arr.Length - 1; i++)
+                {
+                    // traverse i+1 to array length 
+                    for (int j = i + 1; j < arr.Length; j++)
+                    {
+                        // compare array element with  
+                        // all next element 
+                        if (arr[j] < arr[i])
+                        {
+                            temp = arr[i];
+                            arr[i] = arr[j];
+                            arr[j] = temp;
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception " + e);
+            }
+            return arr;
         }
     }
 }
