@@ -55,8 +55,9 @@ namespace Assignment2_S19
 
             // Day of programmer
             Console.WriteLine("\n\nDay of Programmer");
-            int year = 2017;
+            int year = 2015;
             Console.WriteLine(dayOfProgrammer(year));
+            Console.ReadKey();
         }
 
         static void displayArray(int[] arr)
@@ -224,7 +225,54 @@ namespace Assignment2_S19
         // Complete the dayOfProgrammer function below.
         static string dayOfProgrammer(int year)
         {
-            return "";
+            string date = "";
+            int flag=0;
+            if (year<1700 && year>2700)
+            {
+                Console.WriteLine("Please enter valid year");
+            }
+            else
+            {
+                if (year > 1699 & year < 1918)
+                {
+                    if (year % 4 == 0)
+                        flag = 1;
+                }
+                else if (year > 1918 && year < 2701)
+                {
+                    if (year % 400 == 0)
+                    {
+                        flag = 1;
+                    }
+                    if (year % 4 == 0)
+                    {
+                        if (year % 100 != 0)
+                        {
+                            flag = 1;
+                        }
+                    }
+                }
+                else
+                    flag = 2;
+                switch (flag)
+                {
+                    case 0:
+                        date = "13.09."+ year.ToString();
+                        break;
+
+                    case 1:
+                        date = "12.09."+year.ToString();
+                        break;
+
+                    case 2:
+                        date = "26.09."+ year.ToString();
+                        break;
+                }
+
+                return date;
+
+            }
+
         }
     }
 }
