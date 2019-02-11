@@ -55,7 +55,7 @@ namespace Assignment2_S19
 
             // Day of programmer
             Console.WriteLine("\n\nDay of Programmer");
-            int year = 2015;
+            int year = 1800;
             Console.WriteLine(dayOfProgrammer(year));
             Console.ReadKey();
         }
@@ -132,6 +132,7 @@ namespace Assignment2_S19
             return count;
         }
 
+        // Changes made by Arundhati Patil
         // Complete the balancedSums function below.
         static string balancedSums(List<int> arr)
         {
@@ -171,6 +172,7 @@ namespace Assignment2_S19
             }
         }
 
+        // Changes made by Arundhati Patil
         // Complete the missingNumbers function below.
         static int[] missingNumbers(int[] arr, int[] brr)
         {
@@ -197,7 +199,8 @@ namespace Assignment2_S19
             return missingarr.OfType<int>().ToArray();
 
         }
-        // Question 5th and 6th Submitted by Sudesh V Khillare
+
+        // Changes made by Sudesh V Khillare
         // Complete the gradingStudents function below.
         static int[] gradingStudents(int[] grades)
         {
@@ -209,7 +212,7 @@ namespace Assignment2_S19
             {
                 if (grades[i] < 0)
                 {
-                    Console.WriteLine("Enter Valid Array");
+                    Console.WriteLine("Enter Valid Marks");
                     break;
                 }
                 temp = grades[i];
@@ -229,7 +232,7 @@ namespace Assignment2_S19
             return score;
 
         }
-
+        // Changes made by Sudesh V Khillare
         // Complete the findMedian function below.
         static int findMedian(int[] arr)
         {
@@ -316,6 +319,7 @@ namespace Assignment2_S19
             return lst.ToArray();
         }
 
+        // Changes made by Sudesh V Khillare
         // Complete the dayOfProgrammer function below.
         static string dayOfProgrammer(int year)
         {
@@ -348,6 +352,7 @@ namespace Assignment2_S19
                 }
                 else
                     flag = 2;
+
                 switch (flag)
                 {
                     case 0:
@@ -363,9 +368,9 @@ namespace Assignment2_S19
                         break;
                 }
 
-                return date;
-
+                
             }
+            return date;
 
         }
 
